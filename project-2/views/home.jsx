@@ -4,12 +4,12 @@ var DefaulLayout = require('./layout/default')
 class home extends React.Component {
   render() {
 
-    let url = 'http://localhost:3000/orgz/1'
-    let nameOfOrg =  this.props.orgz.map(orgz => (
-              <li key={orgz.id}>
-                <a href={url}>{orgz.orgz_name}</a>
-              </li>
-            ))
+   let nameOfOrg = this.props.orgz.map(orgz => (
+
+        //REMEMBER THIS METHOD
+
+          <li key={orgz.id}><a href={'/orgz/' +  orgz.id}> {orgz.orgz_name}</a></li>
+     ));
 
     console.log(this);
     return (
@@ -26,24 +26,3 @@ class home extends React.Component {
 
 module.exports = home;
 
-
-
-// var React = require('react');
-
-// class Home extends React.Component {
-
-//   render() {
-
-//     const people = this.props.people.map( person => {
-//       return <li>{person}</li>
-//     });
-
-//     return (
-//       <div>
-//         <ul>
-//         {people}
-//         </ul>
-//       </div>
-//     );
-//   }
-// }
