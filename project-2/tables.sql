@@ -9,7 +9,8 @@ CREATE TABLE IF NOT EXISTS donors (
 		id SERIAL PRIMARY KEY,
 		donor_name TEXT,
 		donor_email TEXT,
-		donor_location TEXT
+		donor_location TEXT,
+		donor_password VARCHAR
 );
 
 
