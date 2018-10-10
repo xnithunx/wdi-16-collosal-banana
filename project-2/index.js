@@ -84,15 +84,82 @@ let id = request.params['id'];
       console.log('Query result:', result);
 
 
-      response.render( 'orgzList', {orgz: result.rows[0]} );
+      response.render( 'orgz/orgzList', {orgz: result.rows[0]} );
     }
   });
 }
 
 
+//<<----- Get the login page----->>//
+
+const donorsLogin = (request, response) => {
+
+      response.render( 'donors/login');
+    }
 
 
 
+// const donorsCreate = (request, response) => {
+
+//   const queryString = 'INSERT INTO donors (donor_name) VALUES ($1)';
+
+//   const values = [request.body.name];
+
+//   console.log(queryString);
+
+//   pool.query(queryString, values, (err, result) => {
+
+//     if (err) {
+
+//       console.error('Query error:', err.stack);
+//       response.send('dang it.');
+//     } else {
+
+//       console.log('Query result:', result);
+
+//       // redirect to home page
+//       response.redirect('/');
+//     }
+//   });
+// }
+
+
+//<<----- For users to create their account----->>//
+
+const donorsCreateLogin = (request, response) => {
+
+      response.render( 'donors/new');
+    }
+
+
+
+const donorsCreate = (request, response) => {
+
+  let params = request.body;
+
+  console.log('This is ', request.body);
+
+  const queryString = 'INSERT INTO donors (donor_name, donor_email, donor_location, donor_password) VALUES ($1, $2, $3, $4)';
+
+    const values = [params.name, params.email, params.location, params.password]
+
+  console.log(queryString);
+
+  pool.query(queryString, values, (err, result) => {
+
+    if (err) {
+
+      console.error('Query error:', err.stack);
+      response.send('dang it.');
+    } else {
+
+      console.log('Query result:', result);
+
+      // redirect to home page
+      response.redirect('/');
+    }
+  });
+}
 
 
 
@@ -107,10 +174,19 @@ let id = request.params['id'];
  * ===================================
  */
 
-
+// Route to get homepage i.e. list of the orgz, the route right after is to show individuals orgz
 app.get('/', getOrgz);
 app.get('/orgz/:id', getEachOrgz);
 
+
+
+// Route to go to login page
+app.get('/donors/login', donorsLogin);
+
+
+// Route to go to page where users can sign up and POST sends the data to the DB
+app.get('/donors/new', donorsCreateLogin);
+app.post('/donors', donorsCreate);
 
 
 
