@@ -70,6 +70,24 @@ const queryString = 'SELECT * from orgz;';
 }
 
 
+//<<----- Homepage that shows all the orgz from the DB ----->>//
+
+const allOrgz = (request, response) => {
+
+const queryString = 'SELECT * from orgz;';
+  pool.query(queryString, (err, result) => {
+    if (err) {
+      console.error('Query error:', err.stack);
+    } else {
+      console.log('Query result:', result);
+
+      response.render( 'allOrgz' , {orgz: result.rows} );
+    }
+  });
+}
+
+
+
 //<<----- Sub-page that shows each orgz from the DB----->>//
 
 
@@ -85,6 +103,59 @@ let id = request.params['id'];
 
 
       response.render( 'orgz/orgzList', {orgz: result.rows[0]} );
+    }
+  });
+}
+
+
+//<<----- To Pledge ----->>//
+
+
+const toPledge = (request, response) => {
+
+
+let params = request.body;
+
+  console.log('This is ', request.body);
+
+  const queryString = 'INSERT INTO pledge (donors_name, amount) VALUES ($1, $2)';
+
+    const values = [params.name, params.amount]
+
+  console.log(queryString);
+
+  pool.query(queryString, values, (err, result) => {
+
+    if (err) {
+
+      console.error('Query error:', err.stack);
+      response.send('dang it.');
+    } else {
+
+      console.log('Query result:', result);
+
+      // redirect to home page
+      //response.redirect('/thankYou');
+      response.render('thankYou', {name: request.body.name, amount: request.body.amount})
+    }
+  });
+}
+
+
+//<<----- Thank you page for pledge ----->>//
+
+const thankYou = (request, response) => {
+
+let id = request.params['id'];
+
+  const queryString = 'SELECT max(id) FROM pledge';
+  pool.query(queryString, (err, result) => {
+    if (err) {
+      console.error('Query error:', err.stack);
+    } else {
+      console.log('Query result:', result);
+
+      response.render( 'thankYou' , {pledge: result.rows} );
     }
   });
 }
@@ -164,10 +235,6 @@ const donorsCreate = (request, response) => {
 
 
 
-
-
-
-
 /**
  * ===================================
  * Routes
@@ -177,6 +244,13 @@ const donorsCreate = (request, response) => {
 // Route to get homepage i.e. list of the orgz, the route right after is to show individuals orgz
 app.get('/', getOrgz);
 app.get('/orgz/:id', getEachOrgz);
+app.post('/orgz', toPledge);
+app.get('/thankYou', thankYou);
+
+
+
+// Route to go to an ornganization page and POST the donation amount
+app.get('/allOrgz', allOrgz);
 
 
 
@@ -185,10 +259,8 @@ app.get('/donors/login', donorsLogin);
 
 
 // Route to go to page where users can sign up and POST sends the data to the DB
-app.get('/donors/new', donorsCreateLogin);
+app.get('/donors/createDonors', donorsCreateLogin)
 app.post('/donors', donorsCreate);
-
-
 
 
 
