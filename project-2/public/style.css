@@ -2,6 +2,200 @@
 /*  */
 
 h1 {
-
-	color: red;
+color: black;
+text-align: center;
+padding-top: 03vw;
 }
+
+
+body{
+
+font-family: Arial, Helvetica, sans-serif;
+background-color: #f3e7c3;
+}
+
+
+.navBar {
+
+  background-color: #21a798;
+	width: 100%;
+	height: auto;
+	margin-bottom: 0px;
+}
+
+.navBox {
+
+	display: inline-block;
+	background-color: #21a798;
+	margin-left: 5px;
+	color: white;
+	font-weight: bold;
+	margin-top: 6px;
+	margin-bottom:2px;
+	margin-left: 20px;
+
+}
+
+.navBarText {
+
+	color: white;
+	text-decoration-line: none;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+
+
+.page {
+
+	background-color: #f3e7c3;
+	text-align: center;
+	color: black;
+	height: 100vw;
+}
+
+.BrowseOrgz {
+
+	background-color: #eb6768;
+	width: 30vw;
+	height: auto;
+	padding-top: 01vw;
+	padding-bottom: 01vw;
+	padding-left: 03px;
+	padding-right: 03px;
+	display: inline-block;
+  margin-right: 05px;
+
+}
+
+
+.BrowseCategories {
+
+  background-color: #eb6768;
+	width: 30vw;
+	height: auto;
+	padding-top: 01vw;
+	padding-bottom: 01vw;
+	padding-left: 03px;
+	padding-right: 03px;
+	display: inline-block;
+}
+
+.listOfOrgz {
+
+	background-color: #eb6768;
+	width: 30vw;
+	height: auto;
+	padding-top: 01vw;
+	padding-bottom: 01vw;
+	padding-left: 03px;
+	padding-right: 03px;
+	display: inline-block;
+  margin-right: 05px;
+}
+
+.box1 {
+	color: white;
+	font-weight: bold;
+	text-decoration-line: none;
+	position: relative;
+	padding-top: 01vw;
+	padding-bottom: 01vw;
+	padding-left: 03px;
+	padding-right: 03px;
+}
+
+.buttonText {
+
+	color: white;
+	text-decoration: none;
+}
+
+button {
+
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+button:hover {
+
+}
+
+
+
+.pledge {
+
+font-size: 30px;
+font-weight: bold;
+color: #eb6768;
+
+}
+
+.amount {
+	font-size: 20px;
+	font-weight: normal;
+}
+
+.pledgeButton {
+
+background-color: #eb6768;
+color: white;
+
+}
+
+
+.submitButton {
+
+background-color: #eb6768;
+color: white;
+height: 40px;
+width: 100px;
+font-size: 20px;
+
+}
+
+
+.inputField1 {
+
+	margin-left: 20px;
+
+}
+
+.inputField2 {
+
+	margin-left: 04px;
+
+}
+
+
+.fieldName {
+
+	margin-right: 100px;
+
+}
+
+.thankYou{
+	font-size: 30px;
+	text-align: center;
+	color: #eb6768 ;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
